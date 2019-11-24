@@ -7,14 +7,16 @@ export default class Form extends React.Component {
         inputText : "",
     };
 
+    
+
     render() {
         return (
-            <form className="main-text-input">
-                <input 
-                value={this.state.inputText} 
-                onChange={e=>this.setState({inputText:e.target.value})}
-                />
-            </form>
+                <form >
+                    <input className="main-text-input"
+                    value={this.state.inputText} 
+                    onChange={e=>this.setState({inputText:e.target.value})}
+                    />
+                </form>
         );
     }
 }
