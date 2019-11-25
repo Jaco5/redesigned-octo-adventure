@@ -23,7 +23,8 @@ export default class Form extends React.Component {
     }
 //\b\w*[Yy]\w*\b/
     _wordsWithString =()=> {
-        let regExp = new RegExp(/\b\w*[+(this._regExpEscape(this.state.string))+]\w*\b/, "ig");
+        // let regString = "\\b\\w*"+(this._regExpEscape(this.state.string))+"\\w*\\b"
+        let regExp = new RegExp("\\b\\w*"+(this._regExpEscape(this.state.string))+"\\w*\\b", "ig");
         console.log(regExp);
         let strArr = this.state.inputText.match(regExp);
         console.log(strArr);
