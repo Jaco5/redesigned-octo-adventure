@@ -21,17 +21,31 @@ export default class Form extends React.Component {
         let count = strArr.length;
         console.log(count)
     }
+//\b\w*[Yy]\w*\b/
+    _wordsWithString =()=> {
+        let regExp = new RegExp(/\b\w*[+(this._regExpEscape(this.state.string))+]\w*\b/, "ig");
+        console.log(regExp);
+        let strArr = this.state.inputText.match(regExp);
+        console.log(strArr);
+        let count = strArr.length;
+        console.log(count)
+    }
 
     render() {
         return (
             <div>
                 <form >
-                    <input className="main-text-input"
-                    value={this.state.inputText} 
-                    onChange={e=>this.setState({inputText:e.target.value})}
-                    />
+                    <label>
+                        Text to parse:
+                        <textarea type="text" className="main-text-input"
+                        value={this.state.inputText} 
+                        onChange={e=>this.setState({inputText:e.target.value})}
+                        />
+                    </label>
+                    
                 </form>
-                <button onClick={this._countString}></button>
+                <button onClick={this._countString}>Count!</button>
+                <button onClick={this._wordsWithString}>Words!</button>
             </div>
         );
     }
