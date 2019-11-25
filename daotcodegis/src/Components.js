@@ -8,8 +8,15 @@ export default class Form extends React.Component {
         inputText : "redmond redford",
     };
 
-    countString =()=> {
-        let strArr = this.state.inputText.match(/red/ig);
+    _regExpEscape = (stringInput) => {
+        return stringInput.replace(/[-[\]{}()*+!<=:?.\/\\^$|#\s,]/g, '\\$&');
+    };
+   
+
+    _countString =()=> {
+        let regExp = new RegExp(this._regExpEscape(this.state.string), "ig");
+        console.log(regExp);
+        let strArr = this.state.inputText.match(regExp);
         console.log(strArr);
         let count = strArr.length;
         console.log(count)
@@ -24,7 +31,7 @@ export default class Form extends React.Component {
                     onChange={e=>this.setState({inputText:e.target.value})}
                     />
                 </form>
-                <button onClick={this.countString}></button>
+                <button onClick={this._countString}></button>
             </div>
         );
     }
