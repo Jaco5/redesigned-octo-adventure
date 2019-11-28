@@ -31,7 +31,17 @@ export default class Form extends React.Component {
         let count = strArr.length;
         console.log(count)
     }
-
+    //  [A-Za-z," ]+word[A-Za-z," ]+
+    _sentencesWithWord =()=> {
+        //let regExp = new RegExp('[A-Za-z,\" ]'+(this._regExpEscape(this.state.string))+'[A-Za-z,\" ]+', "ig"); //pulls clauses
+        let regExp = new RegExp('[^.?!]*(?<=[.?!\\s])'+(this._regExpEscape(this.state.string))+'(?=[\\s.?!])[^.?!]*[.?!]', 'ig'); // pulls on case sensitive word
+        console.log(regExp);
+        let strArr = this.state.inputText.match(regExp);
+        console.log(strArr);
+        let count = strArr.length;
+        console.log(count)
+    }
+    
     render() {
         return (
             <div>
@@ -47,6 +57,7 @@ export default class Form extends React.Component {
                 </form>
                 <button onClick={this._countString}>Count!</button>
                 <button onClick={this._wordsWithString}>Words!</button>
+                <button onClick={this._sentencesWithString}>Sentences!</button>
             </div>
         );
     }
